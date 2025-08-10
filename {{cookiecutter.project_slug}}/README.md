@@ -29,50 +29,27 @@ from {{ cookiecutter.package_name }} import core
 
 ## Development
 
-### Setup Development Environment
-
 ```bash
-# Install pre-commit hooks
-pre-commit install
-
-# Run quality checks
-ruff check . && ruff format . && mypy src/
+# Setup
+uv sync --dev
 
 # Run tests
 pytest
-```
 
-### Project Structure
-
-```
-src/{{ cookiecutter.package_name }}/
-├── core/           # Core functionality
-├── utils/          # Utility functions
-└── models/         # Data models
-
-tests/              # Test files
+# Quality checks (automated with Claude Code)
+ruff format . && ruff check . && mypy src/
 ```
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch  
 3. Make your changes
-4. Update `CHANGELIST.md` with your changes
-5. Run quality checks: `ruff check . && ruff format . && mypy src/ && pytest`
-6. Commit your changes
-7. Push to your fork
-8. Create a pull request
+4. Run tests and quality checks
+5. Update `CHANGELIST.md`
+6. Submit pull request
 
-## Development Status
-
-This project was scaffolded using a cookiecutter template and includes:
-- ✅ Project structure and build configuration
-- ✅ Development tooling (ruff, mypy, pytest, pre-commit)
-- ✅ Documentation framework
-- ⏳ Core functionality implementation (to be added)
-- ⏳ Comprehensive test coverage (to be expanded)
-- ⏳ Usage examples and API documentation (pending implementation)
+**Note**: This project includes Claude Code integration for automated quality checks and git workflow. See `CLAUDE.md` for developer instructions.
 
 {% if cookiecutter.license != "None" -%}
 ## License
