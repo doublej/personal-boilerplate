@@ -1,0 +1,96 @@
+# AI Development .gitignore
+
+# Python Core
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# AI Development tools
+.cursorrules
+.cursorignore
+.cursorindexingignore
+.aider*
+.repomap.tags.cache.v1/
+**/.prompts/
+
+# AI/ML specific
+.abstra/
+__marimo__/
+marimo/_static/
+marimo/_lsp/
+.llm_cache/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Type checkers and linters
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# Data and models
+data/*
+!data/.gitkeep
+models/
+checkpoints/
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.parquet
+
+# Logs and traces
+*.log
+logs/
+artifacts/
+traces/
+har/
+
+# Security
+*.pem
+*.key
+*.token
+oauth.json
+*auth*.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package managers
+#uv.lock
+#poetry.lock
+.pdm.toml
+.pdm-python

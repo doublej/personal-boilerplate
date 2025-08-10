@@ -1,0 +1,207 @@
+# Comprehensive Python .gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.py[oc]
+*.py[codz]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+pip-wheel-metadata/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Linters
+.ruff_cache/
+
+# Cython debug symbols
+cython_debug/
+
+# Package managers
+# pipenv
+#Pipfile.lock
+
+# UV
+#uv.lock
+
+# poetry
+#poetry.lock
+#poetry.toml
+
+# pdm
+#pdm.lock
+#pdm.toml
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# pixi
+#pixi.lock
+.pixi
+
+# PEP 582
+__pypackages__/
+
+# PyPI configuration
+.pypirc
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+site/
+/site
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# Virtual Environments
+.env
+.env*
+.env.local
+.env*.local
+.envrc
+.venv
+env/
+venv/
+venv*/
+ENV/
+env.bak/
+venv.bak/
+.direnv/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating Systems
+.DS_Store
+.DS_Store?
+**/.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Databases and Data Storage
+*.sqlite
+/prisma/db.sqlite
+/prisma/db.sqlite-journal
+cache.db
+*.cache
+
+# Project data directories
+data/*
+!data/.gitkeep
+logs/
+logs
+temp/
+workspace/
+uploads/
+
+# Security and Authentication
+*.pem
+*.key
+*.token
+*.p12
+*.pfx
+oauth.json
+browser.json
+*auth*.json
+
+# Media and Assets
+artifacts/
+traces/
+*.pkl
+har/
+
+# Version Control Tools
+tags
+tags.lock
+tags.temp
+tags.temp.tmp
