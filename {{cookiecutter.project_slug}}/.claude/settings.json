@@ -73,6 +73,28 @@
         ]
       }
     ],
+    "SubagentStop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/subagent_stop.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/pre_compact.sh"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
