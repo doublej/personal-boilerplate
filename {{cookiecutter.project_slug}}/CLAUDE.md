@@ -86,7 +86,27 @@ src/{{ cookiecutter.package_name }}/
 └── models/              # Data models and classes (create as needed)
 
 tests/                   # Test files mirror src structure
+scripts/                 # Project build/deploy/utility scripts
+├── lint_custom.py       # Custom linting rules (shared with Claude Code hooks)
+└── <other scripts>      # Your project-specific scripts (build, deploy, etc.)
+
+.claude/                 # Claude Code configuration (hidden)
+├── settings.json        # Hook configuration
+└── scripts/             # Claude Code automation scripts
+    ├── pre_change_checks.sh    # Format & lint before changes
+    ├── post_change_checks.sh   # Type check after changes  
+    ├── pre_session_commit.sh   # Create WIP commit before session
+    ├── post_session_commit.sh  # Create final commit after session
+    ├── session_start.sh        # Session initialization
+    ├── subagent_stop.sh        # Subagent completion handler
+    └── pre_compact.sh          # Context compaction preparation
 ```
+
+### Directory Purpose
+- **`.claude/`**: Claude Code automation (hidden from project)
+- **`scripts/`**: Your project's build, deployment, and utility scripts
+- **`src/`**: Your application source code
+- **`tests/`**: Your test files
 
 ## Code Standards
 
@@ -115,6 +135,7 @@ ruff check . && ruff format . && mypy src/ && uv run scripts/lint_custom.py && p
 This project includes Claude Code hooks configured in `.claude/settings.json` that provide:
 
 ### Automatic Quality Enforcement
+- **File Protection**: Blocks edits to sensitive files (`.env`, `package-lock.json`, `.git/`)
 - **PreToolUse**: Runs `ruff format` and `ruff check --fix` before Write/Edit operations
 - **PostToolUse**: Runs `mypy` type checking after code modifications
 - **Quality Gates**: Ensures code meets standards before and after changes
@@ -126,10 +147,24 @@ This project includes Claude Code hooks configured in `.claude/settings.json` th
 
 ### Session Management
 - **SessionStart**: Shows project info and reminds about CLAUDE.md instructions
+- **SubagentStop**: Creates commits for subagent work and provides completion feedback
+- **PreCompact**: Creates backup commits and cleans temporary files before context compaction
+- **Notification**: Shows macOS desktop notifications when Claude needs user input
 - **Changelog Reminders**: Prompts to update CHANGELIST.md when it's over 30 minutes old
 
 ### Hook Configuration
-The hooks are defined in `.claude/settings.json` and run automatically when using Claude Code in this project directory. They provide deterministic control over the development workflow.
+The hooks are defined in `.claude/settings.json` and run automatically when using Claude Code in this project directory. All hook scripts are located in `.claude/scripts/` to separate Claude Code automation from your project's actual scripts.
+
+**Hook Scripts:**
+- **pre_change_checks.sh**: Formats code with `ruff` and runs linting before Write/Edit operations
+- **post_change_checks.sh**: Runs `mypy` type checking after code modifications
+- **pre_session_commit.sh**: Creates WIP commit before Claude Code starts working
+- **post_session_commit.sh**: Creates final commit after session ends with workflow guidance
+- **session_start.sh**: Displays project information and reminds about CLAUDE.md instructions
+- **subagent_stop.sh**: Handles subagent completion with optional commit creation
+- **pre_compact.sh**: Prepares project state before context compaction with backup commit
+
+The hooks provide deterministic control over the development workflow while keeping automation separate from project functionality.
 
 ### Git Workflow Management
 - **WIP Commits**: Before-session commits are marked with `[claude-code-wip]` for easy identification

@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/pre_change_checks.sh"
+            "command": "./.claude/scripts/pre_change_checks.sh"
           }
         ]
       },
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/post_change_checks.sh"
+            "command": "./.claude/scripts/post_change_checks.sh"
           }
         ]
       }
@@ -46,7 +46,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/pre_session_commit.sh"
+            "command": "./.claude/scripts/pre_session_commit.sh"
           }
         ]
       }
@@ -57,7 +57,7 @@
         "hooks": [
           {
             "type": "command", 
-            "command": "./scripts/post_session_commit.sh"
+            "command": "./.claude/scripts/post_session_commit.sh"
           }
         ]
       }
@@ -68,7 +68,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/session_start.sh"
+            "command": "./.claude/scripts/session_start.sh"
           }
         ]
       }
@@ -79,7 +79,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/subagent_stop.sh"
+            "command": "./.claude/scripts/subagent_stop.sh"
           }
         ]
       }
@@ -90,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/pre_compact.sh"
+            "command": "./.claude/scripts/pre_compact.sh"
           }
         ]
       }
