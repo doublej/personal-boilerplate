@@ -1,0 +1,17 @@
+{
+    "project_name": "My Python Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "package_name": "{{ cookiecutter.project_slug }}",
+    "author_name": "Jurre-Jan Smit",
+    "author_email": "jurrejan@gmail.com",
+    "project_description": "A brief description of your project",
+    "python_version": "3.11",
+    "include_packaging": ["yes", "no"],
+    "include_mkdocs": ["yes", "no"],
+    "license": ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause", "None"],
+    "gitignore_profile": ["minimal", "standard", "comprehensive", "ai-dev", "web-dev", "data-science"],
+    "max_lines_per_file": "400",
+    "create_venv": ["yes", "no"],
+    "venv_name": [".venv", "venv", "env"],
+    "git_init": ["yes", "no"]
+}
