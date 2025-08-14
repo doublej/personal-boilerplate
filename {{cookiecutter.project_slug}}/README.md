@@ -40,6 +40,21 @@ pytest
 ruff format . && ruff check . && mypy src/
 ```
 
+{% if cookiecutter.include_docker == "yes" -%}
+## Docker
+
+```bash
+# Build image
+docker build -t {{ cookiecutter.project_slug }} .
+
+# Run container
+docker run -p {{ cookiecutter.docker_port }}:{{ cookiecutter.docker_port }} {{ cookiecutter.project_slug }}
+
+# Development with volume mount
+docker run -p {{ cookiecutter.docker_port }}:{{ cookiecutter.docker_port }} -v $(pwd):/app {{ cookiecutter.project_slug }}
+```
+{% endif %}
+
 ## Contributing
 
 1. Fork the repository

@@ -1,0 +1,36 @@
+# Production-ready Dockerfile for {{ cookiecutter.project_name }}
+# Uses uv for fast, reproducible Python dependency management
+
+FROM {{ cookiecutter.docker_base_image }} AS base
+
+# Install uv for fast Python package management
+RUN pip install --no-cache-dir uv
+
+# Set working directory
+WORKDIR /app
+
+# Create non-root user for security
+RUN useradd --create-home --shell /bin/bash app && chown -R app:app /app
+USER app
+
+# Copy dependency files first for optimal layer caching
+COPY --chown=app:app pyproject.toml uv.lock* ./
+
+# Install dependencies using uv with locked versions
+RUN uv sync --locked --no-dev
+
+# Copy application code
+COPY --chown=app:app . .
+
+# Health check endpoint (customize for your application)
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:{{ cookiecutter.docker_port }}/health || exit 1
+
+# Expose application port
+EXPOSE {{ cookiecutter.docker_port }}
+
+# Use uv to run the application
+# Update this CMD based on your application entry point:
+# For web apps: CMD ["uv", "run", "uvicorn", "{{ cookiecutter.package_name }}.main:app", "--host", "0.0.0.0", "--port", "{{ cookiecutter.docker_port }}"]
+# For CLI apps: CMD ["uv", "run", "python", "-m", "{{ cookiecutter.package_name }}"]
+CMD ["uv", "run", "python", "-m", "{{ cookiecutter.package_name }}"]

@@ -1,0 +1,85 @@
+# Exclude virtual environments and Python cache files
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Exclude development and testing files
+.pytest_cache/
+.coverage
+.tox/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage.*
+coverage.xml
+*.cover
+
+# Exclude version control and IDE files
+.git/
+.gitignore
+.gitattributes
+.svn/
+.hg/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Exclude IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vim/
+.netrwhist
+
+# Exclude documentation build files
+docs/_build/
+docs/build/
+site/
+.mkdocs.yml
+
+# Exclude CI/CD and deployment files
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Exclude environment and configuration files
+.env
+.env.*
+*.env
+.envrc
+.direnv/
+
+# Exclude logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Exclude build artifacts
+build/
+dist/
+*.egg-info/
+.wheel/
+
+# Exclude Claude Code automation (not needed in container)
+.claude/
+
+# Exclude project-specific files (customize as needed)
+# data/raw/
+# secrets/
+# local_config.py

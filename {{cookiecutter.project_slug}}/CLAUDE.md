@@ -24,6 +24,18 @@ ruff format . && ruff check . && mypy src/
 pytest
 ```
 
+{% if cookiecutter.include_docker == "yes" -%}
+## Docker Commands
+
+```bash
+# Build and run
+docker build -t {{ cookiecutter.project_slug }} . && docker run -p {{ cookiecutter.docker_port }}:{{ cookiecutter.docker_port }} {{ cookiecutter.project_slug }}
+
+# Development mode with live code changes
+docker run -p {{ cookiecutter.docker_port }}:{{ cookiecutter.docker_port }} -v $(pwd):/app {{ cookiecutter.project_slug }}
+```
+{% endif %}
+
 ## Claude Code Integration
 
 This project includes automated quality checks and git integration via Claude Code hooks.
