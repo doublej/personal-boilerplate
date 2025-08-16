@@ -1,17 +1,17 @@
-# Claude Code Git Workflow Guide
+# Automated Git Workflow Guide
 
-This project uses automatic commits to track every change made by Claude Code. Here's how to manage the git history effectively:
+This project uses automatic commits to track changes during development sessions. Here's how to manage the git history effectively:
 
 ## Commit Strategy
 
 **Automatic Feature Branch Workflow (Default):**
-- When starting Claude Code on `main`/`master`, automatically creates a feature branch named `claude-code/session-YYYYMMDD_HHMMSS`
-- Creates commits on the feature branch to isolate Claude Code work
+- When starting on `main`/`master`, automatically creates a feature branch named `feature/session-YYYYMMDD_HHMMSS`
+- Creates commits on the feature branch to isolate development work
 - Provides merge instructions at the end of each session
 
 **Commit Types:**
-- **WIP commits**: `WIP: Save progress before Claude Code session`
-- **Feature commits**: `feat: Implement changes via Claude Code` with proper attribution
+- **WIP commits**: `WIP: Save progress before session`
+- **Feature commits**: `feat: Implement changes`
 
 ## Managing Git History
 
@@ -32,17 +32,17 @@ git rebase -i HEAD~n  # n = number of commits to review
 ```bash
 # The hooks automatically:
 # 1. Detect if you're on main/master
-# 2. Create feature branch: claude-code/session-20241204_143022
-# 3. Work with Claude Code (all commits isolated on feature branch)
+# 2. Create feature branch: feature/session-20241204_143022
+# 3. Work on changes (all commits isolated on feature branch)
 # 4. Provide merge instructions at session end
 
 # To merge the changes:
 git checkout main
-git merge --squash claude-code/session-20241204_143022
-git commit -m "feat: Implement feature with Claude Code assistance"
+git merge --squash feature/session-20241204_143022
+git commit -m "feat: Implement feature"
 
 # Clean up the feature branch:
-git branch -d claude-code/session-20241204_143022
+git branch -d feature/session-20241204_143022
 ```
 
 ### Option 3: Rebase and Clean
@@ -52,8 +52,8 @@ git rebase -i HEAD~10
 
 # Example rebase plan:
 # pick abc123 feat: Initial implementation
-# squash def456 WIP: Save progress before Claude Code session  
-# squash ghi789 feat: Implement changes via Claude Code
+# squash def456 WIP: Save progress before session  
+# squash ghi789 feat: Implement changes
 # pick jkl012 feat: Add tests and documentation
 ```
 
@@ -61,18 +61,14 @@ git rebase -i HEAD~10
 
 **WIP Commits (auto-generated):**
 ```
-WIP: Save progress before Claude Code session
+WIP: Save progress before session
 
-[claude-code-wip]
+[wip]
 ```
 
 **Feature Commits (auto-generated):**
 ```
-feat: Implement changes via Claude Code
-
-🤖 Generated with Claude Code
-
-Co-Authored-By: Claude <noreply@anthropic.com>
+feat: Implement changes
 ```
 
 **Manual Commits (your commits):**

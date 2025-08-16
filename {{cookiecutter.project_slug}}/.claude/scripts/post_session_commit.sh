@@ -11,14 +11,14 @@ fi
 
 # Create final commit if there are changes
 if ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-    echo "📝 Creating final commit after Claude Code changes..."
+    echo "📝 Creating final commit after changes..."
     git add -A
-    git commit -m "feat: Implement changes via Claude Code" || true
+    git commit -m "feat: Implement changes" || true
 fi
 
 # Provide workflow guidance based on current branch
 current_branch=$(git branch --show-current)
-if [[ "$current_branch" == claude-code/* ]]; then
+if [[ "$current_branch" == feature/* ]]; then
     echo "🔀 Feature branch workflow active on: $current_branch"
     echo "💡 To merge: git checkout main && git merge --squash $current_branch && git commit"
     echo "🗑️  To cleanup: git branch -d $current_branch"

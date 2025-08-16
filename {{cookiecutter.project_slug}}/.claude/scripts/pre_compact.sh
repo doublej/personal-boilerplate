@@ -9,9 +9,9 @@ echo "📦 Preparing context for compaction..."
 if [ -d .git ] && ! git diff --quiet; then
     echo "💾 Creating backup commit before context compaction..."
     git add -A
-    git commit -m "wip: Backup before context compaction
+    git commit -m "wip: Backup before compaction
 
-[claude-code-wip]" || true
+[wip]" || true
 fi
 
 # Optional: Clean up temporary files or optimize project state
